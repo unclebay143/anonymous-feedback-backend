@@ -13,13 +13,15 @@ exports.sendFeedback = async (req, res) => {
     ],
   };
   try {
+    // Check if receiver exist
     const { data } = await client.searchByValue({
       table: "feedbacks",
       searchAttribute: "username",
       searchValue: [req.body.username],
       attributes: ["feedback"],
     });
-
+    //  Check if reciever has pass limit
+    // check if username is a premium user
     if (data.length >= 5) {
       res.status(200).send("full");
     } else {
@@ -28,13 +30,13 @@ exports.sendFeedback = async (req, res) => {
       res.send(response);
     }
   } catch (error) {
-    console.log(error);
     res.status(400).send(error);
   }
 };
 
 exports.retrieveFeedBack = async (req, res) => {
   try {
+    // Get receiver feedbacks
     const userFeedback = await client.searchByValue({
       table: "feedbacks",
       searchAttribute: "username",

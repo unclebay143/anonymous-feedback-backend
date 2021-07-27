@@ -14,10 +14,12 @@ app.use(cors());
 // Import routes
 const usersRoutes = require("./routes/receivers");
 const feedbackRoutes = require("./routes/feedbacks");
+const subscriptionRoutes = require("./routes/subscribe");
 
 // Use routes
 app.use("/receivers", usersRoutes);
 app.use("/feedbacks", feedbackRoutes);
+app.use("/feedbacks", subscriptionRoutes);
 
 //Port
 const port = process.env.PORT || 3000;

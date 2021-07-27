@@ -5,6 +5,7 @@ require("dotenv").config();
 
 const harperive = require("harperive");
 
+// connection object to harperdb
 const DB_CONFIG = {
   harperHost: process.env.INSTANCE_URL,
   username: process.env.INSTANCE_USERNAME,
